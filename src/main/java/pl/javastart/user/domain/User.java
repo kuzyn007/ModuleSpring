@@ -5,9 +5,11 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotEmpty;
 import pl.javastart.user.dto.UserDto;
+import pl.javastart.user.dto.UserRoleDto;
 
 import javax.persistence.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by Seweryn Adamczyk on 2017-05-15.
@@ -35,6 +37,9 @@ class User {
                 .firstName(firstName)
                 .lastName(lastName)
                 .email(email)
+                .roles(roles.stream()
+                        .map(userRole -> userRole.dto())
+                        .collect(Collectors.toSet()))
                 .build();
     }
 }

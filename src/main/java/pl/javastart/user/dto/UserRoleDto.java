@@ -12,6 +12,6 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class UserRoleDto {
     private Long id;
-    private UserRoleDto userRoleDto;
+    private String role;
     private String description;
 }

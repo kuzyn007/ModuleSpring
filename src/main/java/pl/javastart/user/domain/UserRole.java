@@ -3,6 +3,7 @@ package pl.javastart.user.domain;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import pl.javastart.user.dto.UserRoleDto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,14 @@ class UserRole {
     @Id
     @GeneratedValue
     private Long id;
-    private UserType userType;
+    private String role;
     private String description;
+
+    UserRoleDto dto() {
+        return UserRoleDto.builder()
+                .id(id)
+                .role(role)
+                .description(description)
+                .build();
+    }
 }
